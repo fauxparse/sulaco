@@ -397,6 +397,7 @@ DEPENDENCIES
   refills
   rspec-rails (~> 3.5.0.beta4)
   rspec_junit_formatter (= 0.2.2)
+  rubocop
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form
