@@ -60,6 +60,7 @@ group :test do
   gem "webmock"
   gem 'cucumber-rails', require: false
   gem 'email_spec'
+  gem 'rspec_junit_formatter', '0.2.2'
 end
 
 group :staging, :production do
