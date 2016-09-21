@@ -1,13 +1,13 @@
 SMTP_SETTINGS = {
-  address: ENV.fetch("SMTP_ADDRESS"), # example: "smtp.sendgrid.net"
+  address:        'smtp.sendgrid.net',
+  port:           '587',
+  domain:         'heroku.com',
+  user_name:      ENV.fetch('SENDGRID_USERNAME'),
+  password:       ENV.fetch('SENDGRID_PASSWORD'),
   authentication: :plain,
-  domain: ENV.fetch("SMTP_DOMAIN"), # example: "heroku.com"
-  enable_starttls_auto: true,
-  password: ENV.fetch("SMTP_PASSWORD"),
-  port: "587",
-  user_name: ENV.fetch("SMTP_USERNAME")
+  enable_starttls_auto: true
 }
 
-if ENV["EMAIL_RECIPIENTS"].present?
-  Mail.register_interceptor RecipientInterceptor.new(ENV["EMAIL_RECIPIENTS"])
+if ENV['EMAIL_RECIPIENTS'].present?
+  Mail.register_interceptor RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS'])
 end
