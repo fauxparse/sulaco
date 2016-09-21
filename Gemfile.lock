@@ -156,7 +156,6 @@ GEM
       tilt
     hashdiff (0.3.0)
     high_voltage (3.0.0)
-    honeybadger (2.6.1)
     htmlentities (4.3.4)
     i18n (0.7.0)
     jquery-rails (4.2.1)
@@ -378,7 +377,6 @@ DEPENDENCIES
   guard-rubocop
   haml
   high_voltage
-  honeybadger
   jquery-rails
   launchy
   listen
