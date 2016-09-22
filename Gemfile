@@ -75,3 +75,4 @@ gem 'neat', '~> 1.8.0'
 gem 'refills', group: [:development, :test]
 gem 'haml'
 gem 'turbolinks'
+gem 'stringex'
