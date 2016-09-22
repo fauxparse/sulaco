@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require 'email_spec/cucumber'
 
 Dir[File.expand_path(Rails.root.join('spec', 'support', 'shared_helpers', '**', '*.rb'))].each do |f|
   require f

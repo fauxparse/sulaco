@@ -10,6 +10,12 @@
     = render 'javascript'
     = csrf_meta_tags
   %body{:class => body_class}
+    %nav
+      - if signed_in?
+        = current_user.email
+      - else
+        = link_to 'Log in', new_user_session_path
+        = link_to 'Sign up', new_user_registration_path
     = render 'flashes'
     = yield
     = yield :javascript
