@@ -1,9 +1,7 @@
 class Team < ApplicationRecord
-  acts_as_url :name,
-    url_attribute: :slug,
-    limit: 64
+  acts_as_url :name, url_attribute: :slug, limit: 64
 
-  has_many :members
+  has_many :members, -> { includes(:user) }
 
   validates :name, presence: true
 

@@ -15,4 +15,15 @@ RSpec.describe Member, type: :model do
     subject(:to_param) { member.to_param }
     it { is_expected.to eq 'ripley' }
   end
+
+  context 'who is a manager' do
+    subject(:member) { FactoryGirl.build(:manager, name: 'Apone') }
+
+    it { is_expected.to be_valid }
+
+    context 'without an associated user' do
+      before { member.user = nil }
+      it { is_expected.not_to be_valid }
+    end
+  end
 end

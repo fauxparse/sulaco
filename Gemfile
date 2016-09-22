@@ -76,3 +76,4 @@ gem 'refills', group: [:development, :test]
 gem 'haml'
 gem 'turbolinks'
 gem 'stringex'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
