@@ -89,6 +89,9 @@ GEM
     concurrent-ruby (1.0.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    cry (0.1.0)
+    css_parser (1.4.5)
+      addressable
     cucumber (2.4.0)
       builder (>= 2.1.2)
       cucumber-core (~> 1.5.0)
@@ -177,6 +180,8 @@ GEM
     json (2.0.2)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -212,6 +217,12 @@ GEM
     pg (0.18.4)
     pkg-config (1.1.7)
     powerpack (0.1.1)
+    premailer (1.8.7)
+      css_parser (>= 1.4.5)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.9.4)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -383,6 +394,7 @@ DEPENDENCIES
   bullet
   bundler-audit (>= 0.5.0)
   capybara-webkit
+  cry
   cucumber-rails
   database_cleaner
   delayed_job_active_record
@@ -401,10 +413,12 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   launchy
+  letter_opener
   listen
   neat (~> 1.8.0)
   normalize-rails (~> 3.0.0)
   pg
+  premailer-rails
   pry-byebug
   pry-rails
   puma

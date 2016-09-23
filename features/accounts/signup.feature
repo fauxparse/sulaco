@@ -5,7 +5,7 @@ Feature: Account signup
 
   Scenario: Signing up, confirming, and logging in for the first time
     Given I am not logged in
-     When I visit the home page
+     When I visit the login page
       And I click the "Sign up" link
       And I enter my email address as "ripley@sula.co"
       And I enter and confirm my password

@@ -10,7 +10,9 @@ Feature: Add team members
      When I visit the team page
       And I click the "Edit members" link
       And I click the "Add members" link
-      And I fill in "Name" with "Vasquez"
-      And I click the "Create Member" button
+      And I fill in the following members:
+        | name    |
+        | Vasquez |
+      And I click the "Invite members" button
      Then I should be on the edit members page
-      And I should see "Added Vasquez"
+      And I should see "Vasquez"
