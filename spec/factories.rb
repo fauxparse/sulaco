@@ -17,6 +17,14 @@ FactoryGirl.define do
       manager true
       user
     end
+
+    trait :with_attached_user do
+      email { generate(:email) }
+
+      after(:create) do |member|
+        member.update(user: FactoryGirl.create(:user, email: member.email))
+      end
+    end
   end
 
   factory :team do
