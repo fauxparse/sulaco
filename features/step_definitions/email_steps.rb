@@ -31,6 +31,18 @@ module EmailHelpers
     # Note that last_email_address will be reset after each Scenario.
     last_email_address || @email || 'example@example.com'
   end
+
+  def links_in_email(email)
+    part = email.default_part
+    if part.content_type =~ %r{text/html}
+      Nokogiri::HTML::Document
+        .parse(part.body.to_s)
+        .search('a')
+        .map { |a| a[:href] }
+    else
+      URI.extract(part.body.to_s, %w(http https))
+    end
+  end
 end
 
 World(EmailHelpers)
@@ -81,19 +93,19 @@ When(/^I open the email sent to "([^"]*)"$/) do |address|
   open_email(address)
 end
 
-When(/^(?:I|they|"([^"]*?)") opens? the email with subject "([^"]*?)"$/) do |address, subject|
+When(/^(?:I|they|"([^"]*?)") opens? the email with(?: the)? subject "([^"]*?)"$/) do |address, subject|
   open_email(address, with_subject: subject)
 end
 
-When(%r{^(?:I|they|"([^"]*?)") opens? the email with subject /([^"]*?)/$}) do |address, subject|
+When(%r{^(?:I|they|"([^"]*?)") opens? the email with(?: the)? subject /([^"]*?)/$}) do |address, subject|
   open_email(address, with_subject: Regexp.new(subject))
 end
 
-When(/^(?:I|they|"([^"]*?)") opens? the email with text "([^"]*?)"$/) do |address, text|
+When(/^(?:I|they|"([^"]*?)") opens? the email with(?: the)? text "([^"]*?)"$/) do |address, text|
   open_email(address, with_text: text)
 end
 
-When(%r{^(?:I|they|"([^"]*?)") opens? the email with text /([^"]*?)/$}) do |address, text|
+When(%r{^(?:I|they|"([^"]*?)") opens? the email with(?: the)? text /([^"]*?)/$}) do |address, text|
   open_email(address, with_text: Regexp.new(text))
 end
 

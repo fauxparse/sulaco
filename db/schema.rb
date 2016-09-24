@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922013757) do
+ActiveRecord::Schema.define(version: 20160922194037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 20160922013757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "sender_id"
+    t.string   "email",      limit: 128
+    t.string   "token",      limit: 64
+    t.string   "status",     limit: 16,  default: "pending"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.index ["email", "status"], name: "index_invitations_on_email_and_status", using: :btree
+    t.index ["member_id"], name: "index_invitations_on_member_id", using: :btree
+    t.index ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
+    t.index ["token"], name: "index_invitations_on_token", unique: true, using: :btree
   end
 
   create_table "members", force: :cascade do |t|
@@ -74,6 +88,8 @@ ActiveRecord::Schema.define(version: 20160922013757) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "invitations", "members", column: "sender_id", on_delete: :cascade
+  add_foreign_key "invitations", "members", on_delete: :cascade
   add_foreign_key "members", "teams", on_delete: :cascade
   add_foreign_key "members", "users", on_delete: :nullify
 end

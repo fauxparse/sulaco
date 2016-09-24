@@ -22,4 +22,13 @@ FactoryGirl.define do
   factory :team do
     name 'Sulaco'
   end
+
+  factory :invitation do
+    member
+    email { generate(:email) }
+
+    before(:create) do |invitation|
+      invitation.sender = FactoryGirl.create(:manager, team: invitation.team)
+    end
+  end
 end

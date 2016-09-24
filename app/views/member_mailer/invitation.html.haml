@@ -1,0 +1,9 @@
+%p= "Hi #{@invitation.member.name},"
+
+%p
+  = @invitation.sender.name
+  has invited you to join their team,
+  = "#{@invitation.team.name}."
+
+%p
+  = link_to 'Click here to accept the invitation', accept_invitation_url(@invitation)
