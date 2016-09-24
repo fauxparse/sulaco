@@ -1,12 +1,12 @@
 class InviteMembers
   include Cry
 
-  attr_reader :team, :sender, :params
+  attr_reader :team, :sender, :member_attributes
 
-  def initialize(team, sender, params)
+  def initialize(team, sender, member_attributes)
     @team = team
     @sender = sender
-    @params = params
+    @member_attributes = member_attributes
   end
 
   def call
@@ -20,8 +20,8 @@ class InviteMembers
   private
 
   def members
-    @members ||= params[:members].values.map do |attributes|
-      unless attributes[:name].blank?
+    @members ||= member_attributes.map do |attributes|
+      unless attributes.blank? || attributes.values.all?(&:blank?)
         team.members.build(name: attributes[:name], email: attributes[:email])
       end
     end.compact

@@ -8,6 +8,7 @@ class Member < ApplicationRecord
   validates :name, :team, presence: true
   validates :name, uniqueness: { scope: :team_id, case_sensitive: false }
   validates :user, presence: true, if: :manager?
+  validates :email, format: { with: User.email_regexp, allow_blank: true }
 
   def to_s
     name

@@ -10,7 +10,7 @@ class MembersController < ApplicationController
 
   def create
     InviteMembers
-      .new(team, current_member, params)
+      .new(team, current_member, params[:members].values)
       .on(:invited) { |happy, sad| invitations_created(happy, sad) }
       .call
   end

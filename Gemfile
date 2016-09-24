@@ -55,6 +55,7 @@ group :test do
   gem 'formulaic'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'rspec-collection_matchers'
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'webmock'
