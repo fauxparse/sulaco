@@ -32,6 +32,8 @@ group :development do
   gem 'guard-cucumber'
   gem 'guard-rails', require: false
   gem 'guard-rubocop'
+  gem 'guard-ctags-bundler'
+  gem 'rb-readline'
 end
 
 group :development, :test do
