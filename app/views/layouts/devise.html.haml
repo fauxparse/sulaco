@@ -1,0 +1,9 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    = render 'application/head'
+  %body{:class => body_class}
+    = render 'flashes'
+    = yield
+    = yield :javascript
+    = render 'css_overrides'

@@ -5,7 +5,6 @@ ruby '2.3.1'
 gem 'autoprefixer-rails'
 gem 'delayed_job_active_record'
 gem 'flutie'
-gem 'jquery-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'pg'
 gem 'puma'
@@ -19,6 +18,8 @@ gem 'sprockets-es6'
 gem 'suspenders'
 gem 'title'
 gem 'uglifier'
+
+gem 'react-rails'
 
 group :development do
   gem 'listen'
